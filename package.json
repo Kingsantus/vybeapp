@@ -15,13 +15,17 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.41.0",
     "express": "^5.1.0",
-    "node-telegram-bot-api": "^0.66.0"
+    "node-telegram-bot-api": "^0.66.0",
+    "postgres": "^3.4.5"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.1",
     "@types/express": "^5.0.1",
     "@types/node": "^22.13.17",
+    "@types/node-telegram-bot-api": "^0.64.8",
+    "drizzle-kit": "^0.30.6",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2"
