@@ -7,11 +7,9 @@ if (!apiKey) {
 
 vybeApi.auth(apiKey)
 
-const getNFTCollectionOwners = async (wallet: string):Promise<any> => {
+const getPythProduct = async (productId: string):Promise<any> => {
     try {
-        const { data } = await vybeApi.get_collection_owners({
-            collectionAddress: wallet
-        });
+        const { data } = await vybeApi.get_pyth_product({productId: productId});
         return data;
     } catch (err) {
         console.error(err);
@@ -19,4 +17,4 @@ const getNFTCollectionOwners = async (wallet: string):Promise<any> => {
     }
 }
 
-export default getNFTCollectionOwners;
+export default getPythProduct;

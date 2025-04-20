@@ -15,13 +15,13 @@ enum range {
     Y = "1y"
 }
 
-const getMarketOHLCV = async (marketId: string, range?: range):Promise<any> => {
+const getMarketOHLCV = async (marketId: string, range?: range, limit?: number):Promise<any> => {
     try {
         const { data } = await vybeApi.get_market_filtered_ohlcv({
             marketId: marketId,
             resolution: (range ?? "1d") as "1d" | "7d" | "30d" | undefined,
             page: 1,
-            limit: 100
+            limit: limit ?? 10
         });
         return data;
     } catch (err) {

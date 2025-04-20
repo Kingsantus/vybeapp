@@ -7,11 +7,9 @@ if (!apiKey) {
 
 vybeApi.auth(apiKey)
 
-const getNFTCollectionOwners = async (wallet: string):Promise<any> => {
+const getTokenOHLCV = async (mintAddress: string, interval?: "1d" | "7d" | "30d", limit?: number):Promise<any> => {
     try {
-        const { data } = await vybeApi.get_collection_owners({
-            collectionAddress: wallet
-        });
+        const { data } = await vybeApi.get_token_trade_ohlc({resolution: interval ?? '1d', limit: limit ?? 10, mintAddress: mintAddress});
         return data;
     } catch (err) {
         console.error(err);
@@ -19,4 +17,4 @@ const getNFTCollectionOwners = async (wallet: string):Promise<any> => {
     }
 }
 
-export default getNFTCollectionOwners;
+export default getTokenOHLCV;

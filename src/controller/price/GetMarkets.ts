@@ -12,7 +12,7 @@ const getMarkets = async (wallet: string):Promise<any> => {
     try {
         const { data } = await vybeApi.get_markets({
             programId: wallet,
-            page: 1,
+            page: 1 - 5,
             limit: 50
         });
         return data;

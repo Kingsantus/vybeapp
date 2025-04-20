@@ -7,10 +7,14 @@ if (!apiKey) {
 
 vybeApi.auth(apiKey)
 
-const getNFTCollectionOwners = async (wallet: string):Promise<any> => {
+const getPairOHLCV = async (baseMintAddress: string, quoteMintAddress: string, limit?: number, interver?: string, ):Promise<any> => {
     try {
-        const { data } = await vybeApi.get_collection_owners({
-            collectionAddress: wallet
+        const data = await fetch(`https://api.vybenetwork.xyz/price/${baseMintAddress}+${quoteMintAddress}/pair-ohlcv?resolution=${interver ?? '1h'}&limit=${limit ?? 10}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "x-api-key": apiKey,
+            }
         });
         return data;
     } catch (err) {
@@ -19,4 +23,4 @@ const getNFTCollectionOwners = async (wallet: string):Promise<any> => {
     }
 }
 
-export default getNFTCollectionOwners;
+export default getPairOHLCV;
