@@ -7,10 +7,6 @@ if (!apiKey) {
 
 vybeApi.auth(apiKey)
 
-vybeApi.get_collection_owners({collectionAddress: 'NTYeYJ1wr4bpM5xo6zx5En44SvJFAd35zTxxNoERYqd'})
-  .then(({ data }) => console.log(data))
-  .catch(err => console.error(err));
-
 const getNFTCollectionOwners = async (wallet: string):Promise<any> => {
     try {
         const { data } = await vybeApi.get_collection_owners({
