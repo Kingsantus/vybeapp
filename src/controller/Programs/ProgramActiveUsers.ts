@@ -7,11 +7,9 @@ if (!apiKey) {
 
 vybeApi.auth(apiKey)
 
-const getNFTCollectionOwners = async (wallet: string):Promise<any> => {
+const getProgramActiveUser = async (programAddress: string, limit?: number):Promise<any> => {
     try {
-        const { data } = await vybeApi.get_collection_owners({
-            collectionAddress: wallet
-        });
+        const { data } = await vybeApi.get_program_active_users({limit: limit ?? 10, programAddress: programAddress});
         return data;
     } catch (err) {
         console.error(err);
@@ -19,4 +17,4 @@ const getNFTCollectionOwners = async (wallet: string):Promise<any> => {
     }
 }
 
-export default getNFTCollectionOwners;
+export default getProgramActiveUser;

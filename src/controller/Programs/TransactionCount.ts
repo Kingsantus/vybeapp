@@ -7,11 +7,11 @@ if (!apiKey) {
 
 vybeApi.auth(apiKey)
 
-const getNFTCollectionOwners = async (wallet: string):Promise<any> => {
+type Range = '1h' | '24h' | '7d';
+
+const getTransactionCount = async (programAddress: string, range: Range = '1h'):Promise<any> => {
     try {
-        const { data } = await vybeApi.get_collection_owners({
-            collectionAddress: wallet
-        });
+        const { data } = await vybeApi.get_program_transactions_count({range: range, programAddress: programAddress});
         return data;
     } catch (err) {
         console.error(err);
@@ -19,4 +19,4 @@ const getNFTCollectionOwners = async (wallet: string):Promise<any> => {
     }
 }
 
-export default getNFTCollectionOwners;
+export default getTransactionCount;
